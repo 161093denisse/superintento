@@ -9,6 +9,9 @@ rpm -i jdk-8u131-linux-x64.rpm
 alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000
 alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 200000
 alternatives --install /usr/bin/jar jar /usr/java/latest/bin/jar 200000
-echo "export JAVA_HOME"/user/java/latest"" >> /etc/rc/rc.local
-
-
+echo "export JAVA_HOME"/user/java/latest"" >> /etc/bashrc
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+yum install -y jenkins
+systemctl start jenkins.service
+popd
